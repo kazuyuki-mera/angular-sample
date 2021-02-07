@@ -11,14 +11,14 @@
   font-size: 14px;
   line-height: 21px;
   cursor: pointer;
-}
 
-.button .black {
-  background-color: #212121;
-}
+  &.black {
+    background-color: #212121;
+  }
 
-.button .white {
-  color: #212121;
-  background-color: white;
-  border: 1px solid #212121;
+  &.white {
+    color: #212121;
+    background-color: white;
+    border: 1px solid #212121;
+  }
 }
