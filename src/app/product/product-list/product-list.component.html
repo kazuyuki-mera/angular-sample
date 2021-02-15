@@ -3,7 +3,7 @@
   <div class="product-list-container">
     <div
       class="waiting-for-products"
-      *ngIf="products.length === 0; else productList"
+      *ngIf="products === null; else productList"
     >
       商品を取得しています...
     </div>
@@ -14,10 +14,24 @@
           <div class="product-name">名前</div>
           <div class="product-price">価格</div>
         </div>
-        <div class="product-line" *ngFor="let product of products">
+        <div
+          class="product-line"
+          *ngFor="let product of products"
+          (mouseenter)="hovered(product)"
+          (mouseleave)="unhovered(product)"
+        >
           <div class="product-id">{{ product.id }}</div>
           <div class="product-name">{{ product.name }}</div>
-          <div class="product-price">{{ product.price }}</div>
+          <div class="product-price">
+            <span *ngIf="!product.hovered; else Unhovered">{{
+              product.price
+            }}</span>
+            <ng-template #Unhovered
+              ><span class="button white" [routerLink]="[product.id]"
+                >詳細</span
+              ></ng-template
+            >
+          </div>
         </div>
       </div>
     </ng-template>

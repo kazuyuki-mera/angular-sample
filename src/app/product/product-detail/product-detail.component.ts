@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { ProductService } from '../../shared/services/product.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,7 +11,10 @@ import { ProductService } from '../../shared/services/product.service';
 export class ProductDetailComponent implements OnInit {
   product!: Product;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.productService.get(2).subscribe((product: Product) => {
